@@ -3,18 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Underproofed | Quick-Start Braiding Guides</title>
+  <title>Underproofed — Engineered Studio Tools</title>
   <style>
+    /* -------------------------------------------------------------
+       SWISS TYPOGRAPHIC FOUNDATION
+       ------------------------------------------------------------- */
     :root {
-      --bg: #0f172a;
-      --card-bg: #1e293b;
-      --card-border: #334155;
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      --accent: #38bdf8;
-      --accent-hover: #0ea5e9;
-      --tag-bg: #0f766e;
-      --tag-text: #ccfbf1;
+      --bg: #fcfcfc;
+      --surface: #ffffff;
+      --text-main: #111111;
+      --text-muted: #666666;
+      --border: #e2e2e2;
+      --border-dark: #111111;
+      --accent: #000000;
+      --accent-hover: #333333;
     }
 
     * {
@@ -24,218 +26,396 @@
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-family: "Helvetica Neue", Helvetica, Arial, -apple-system, sans-serif;
       background-color: var(--bg);
       color: var(--text-main);
-      line-height: 1.5;
-      padding: 24px 16px 48px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.45;
+      padding-bottom: 80px;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
     .container {
-      max-width: 540px;
+      max-width: 1120px;
       margin: 0 auto;
+      padding: 0 24px;
     }
 
-    header {
-      text-align: center;
-      margin-bottom: 28px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid var(--card-border);
+    /* -------------------------------------------------------------
+       NAVIGATION
+       ------------------------------------------------------------- */
+    nav {
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: rgba(252, 252, 252, 0.95);
+      backdrop-filter: blur(8px);
+      z-index: 100;
     }
 
-    .brand-title {
-      font-size: 1.5rem;
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 64px;
+    }
+
+    .logo {
+      font-size: 1.15rem;
       font-weight: 700;
-      letter-spacing: -0.02em;
-      color: var(--text-main);
-    }
-
-    .subtitle {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      margin-top: 6px;
-    }
-
-    .section-heading {
-      font-size: 1rem;
+      letter-spacing: -0.03em;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--accent);
-      margin: 24px 0 12px;
-      font-weight: 600;
     }
 
-    /* Video Card Styling */
-    .guide-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 12px;
-      padding: 16px;
-      margin-bottom: 14px;
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links a {
+      transition: color 0.15s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-muted);
+    }
+
+    .btn-etsy {
+      display: inline-block;
+      background: var(--border-dark);
+      color: #ffffff;
+      padding: 8px 16px;
+      border-radius: 2px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: background-color 0.15s ease;
+    }
+
+    .btn-etsy:hover {
+      background: var(--accent-hover);
+      color: #ffffff;
+    }
+
+    /* -------------------------------------------------------------
+       HERO SECTION
+       ------------------------------------------------------------- */
+    .hero {
+      padding: 80px 0 64px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .hero-title {
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      max-width: 900px;
+      margin-bottom: 24px;
+    }
+
+    .hero-desc {
+      font-size: 1.1rem;
+      line-height: 1.5;
+      color: var(--text-muted);
+      max-width: 600px;
+    }
+
+    /* -------------------------------------------------------------
+       CATEGORY GRID
+       ------------------------------------------------------------- */
+    .categories {
+      padding: 64px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .category-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 40px 32px;
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      transition: transform 0.15s ease, border-color 0.15s ease;
-      text-decoration: none;
-      color: inherit;
+      justify-content: space-between;
+      min-height: 380px;
+      transition: border-color 0.15s ease, transform 0.15s ease;
     }
 
-    .guide-card:active,
-    .guide-card:hover {
-      border-color: var(--accent);
+    .category-card:hover {
+      border-color: var(--border-dark);
       transform: translateY(-2px);
     }
 
-    .card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 8px;
+    .card-meta {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-bottom: 12px;
     }
 
     .card-title {
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: var(--text-main);
-    }
-
-    .badge {
-      font-size: 0.75rem;
-      font-weight: 600;
-      padding: 2px 8px;
-      border-radius: 999px;
-      background: var(--tag-bg);
-      color: var(--tag-text);
-      white-space: nowrap;
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 16px;
     }
 
     .card-desc {
-      font-size: 0.88rem;
+      font-size: 0.95rem;
       color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 32px;
     }
 
-    .btn-watch {
+    .card-link {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
       display: inline-flex;
       align-items: center;
-      justify-content: center;
       gap: 6px;
-      width: 100%;
-      background: var(--accent);
-      color: #0f172a;
-      font-weight: 600;
+    }
+
+    /* -------------------------------------------------------------
+       FEATURE / PRINCIPLE STRIP
+       ------------------------------------------------------------- */
+    .specs-strip {
+      padding: 64px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .specs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .spec-item h4 {
       font-size: 0.9rem;
-      padding: 10px 14px;
-      border-radius: 8px;
-      margin-top: 4px;
-    }
-
-    /* Cheat Sheet Box */
-    .cheatsheet {
-      background: rgba(56, 189, 248, 0.05);
-      border: 1px dashed var(--accent);
-      border-radius: 12px;
-      padding: 16px;
-      margin-top: 28px;
-    }
-
-    .cheatsheet h3 {
-      font-size: 1rem;
-      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: -0.01em;
       margin-bottom: 8px;
     }
 
-    .step-list {
-      padding-left: 20px;
-      font-size: 0.9rem;
+    .spec-item p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* -------------------------------------------------------------
+       FOOTER
+       ------------------------------------------------------------- */
+    footer {
+      padding: 64px 0 24px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 48px;
+    }
+
+    .footer-brand {
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    .footer-tagline {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      max-width: 320px;
+    }
+
+    .footer-col h5 {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col li {
+      margin-bottom: 8px;
+      font-size: 0.85rem;
+    }
+
+    .footer-col a {
+      color: var(--text-muted);
+      transition: color 0.15s ease;
+    }
+
+    .footer-col a:hover {
       color: var(--text-main);
     }
 
-    .step-list li {
-      margin-bottom: 6px;
-    }
-
-    /* Footer */
-    footer {
-      text-align: center;
-      margin-top: 36px;
-      font-size: 0.85rem;
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
       color: var(--text-muted);
     }
 
-    footer a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
+    /* -------------------------------------------------------------
+       RESPONSIVE
+       ------------------------------------------------------------- */
+    @media (max-width: 768px) {
+      .grid-2, .specs-grid, .footer-grid {
+        grid-template-columns: 1fr;
+      }
+      .nav-links {
+        display: none; /* Keeps mobile header minimal */
+      }
+      .category-card {
+        min-height: auto;
+      }
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <header>
-      <div class="brand-title">Underproofed</div>
-      <div class="subtitle">Quick-Start Video Guides &amp; Patterns</div>
-    </header>
-
-    <div class="section-heading">Video Walkthroughs</div>
-
-    <!-- Video 1 -->
-    <a href="https://www.youtube.com" target="_blank" class="guide-card">
-      <div class="card-header">
-        <div class="card-title">1. Winding &amp; Setting Bobbins</div>
-        <span class="badge">45 sec</span>
+  <!-- Navigation -->
+  <nav>
+    <div class="container nav-inner">
+      <a href="/" class="logo">Underproofed</a>
+      <div class="nav-links">
+        <a href="#pottery">Pottery Systems</a>
+        <a href="#fiber">Fiber Arts</a>
+        <a href="/guides/">Guides &amp; Videos</a>
+        <a href="https://www.etsy.com/shop/YourEtsyShop" target="_blank" class="btn-etsy">Etsy Shop ↗</a>
       </div>
-      <div class="card-desc">How to load your cords into the silicone bobbins to prevent tangles while braiding.</div>
-      <div class="btn-watch">▶ Watch Video</div>
-    </a>
-
-    <!-- Video 2 -->
-    <a href="https://www.youtube.com" target="_blank" class="guide-card">
-      <div class="card-header">
-        <div class="card-title">2. Basic 8-Strand Round Braid</div>
-        <span class="badge">60 sec</span>
-      </div>
-      <div class="card-desc">The core "Right-Down, Left-Up" move using the HimoGrip disk.</div>
-      <div class="btn-watch">▶ Watch Video</div>
-    </a>
-
-    <!-- Video 3 -->
-    <a href="https://www.youtube.com" target="_blank" class="guide-card">
-      <div class="card-header">
-        <div class="card-title">3. Para16 Heavy Cord Setup</div>
-        <span class="badge">60 sec</span>
-      </div>
-      <div class="card-desc">Setting up 550 paracord tension and handling thicker rope braids.</div>
-      <div class="btn-watch">▶ Watch Video</div>
-    </a>
-
-    <!-- Video 4 -->
-    <a href="https://www.youtube.com" target="_blank" class="guide-card">
-      <div class="card-header">
-        <div class="card-title">4. Finishing &amp; Casting Off</div>
-        <span class="badge">45 sec</span>
-      </div>
-      <div class="card-desc">Tying off your braid, trimming ends, and attaching end-caps or keyrings.</div>
-      <div class="btn-watch">▶ Watch Video</div>
-    </a>
-
-    <!-- Quick Reference Section -->
-    <div class="cheatsheet">
-      <h3>Quick Rhythm Reference</h3>
-      <ol class="step-list">
-        <li><strong>Top-Right:</strong> Move straight down to bottom-right slot.</li>
-        <li><strong>Bottom-Left:</strong> Move straight up to top-left slot.</li>
-        <li><strong>Rotate:</strong> Turn disk 90° counter-clockwise and repeat.</li>
-      </ol>
     </div>
+  </nav>
 
+  <div class="container">
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-label">00 / Studio Engineering</div>
+      <h1 class="hero-title">Functional tools designed to eliminate studio friction.</h1>
+      <p class="hero-desc">Engineered studio accessories, wheel throwing systems, and heavy-duty fiber tools fabricated with precision in Michigan.</p>
+    </section>
+
+    <!-- Product Lines -->
+    <section class="categories">
+      <div class="section-label">Selected Categories</div>
+      <div class="grid-2">
+
+        <!-- Category 1: Ceramic -->
+        <a href="https://www.etsy.com/shop/YourEtsyShop" target="_blank" class="category-card" id="pottery">
+          <div>
+            <div class="card-meta">01 / CERAMIC SYSTEMS</div>
+            <h2 class="card-title">Wheel Bats &amp; Modular Inserts</h2>
+            <p class="card-desc">Water-resistant throwing bat systems featuring mechanical tile ejection. Built for high-volume studio production without warping or stuck pieces.</p>
+          </div>
+          <div class="card-link">View Systems on Etsy ↗</div>
+        </a>
+
+        <!-- Category 2: Fiber -->
+        <a href="https://www.etsy.com/shop/YourEtsyShop" target="_blank" class="category-card" id="fiber">
+          <div>
+            <div class="card-meta">02 / FIBER ARTS</div>
+            <h2 class="card-title">HimoGrip &amp; Para16 Braiding Looms</h2>
+            <p class="card-desc">Rigid Kumihimo disks engineered for standard thread and heavy 550 paracord. Consistent slot tension that won't degrade like soft foam.</p>
+          </div>
+          <div class="card-link">View Tools &amp; Kits on Etsy ↗</div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- Engineering Principles -->
+    <section class="specs-strip">
+      <div class="specs-grid">
+        <div class="spec-item">
+          <h4>Engineered Tolerances</h4>
+          <p>Every tool is dimensionally modeled and fabricated to hold rigid mechanical tolerances under wet or high-tension studio conditions.</p>
+        </div>
+        <div class="spec-item">
+          <h4>Material Durability</h4>
+          <p>Constructed with impact-resistant, non-hygroscopic technical polymers that resist water absorption, warping, and layer fatigue.</p>
+        </div>
+        <div class="spec-item">
+          <h4>Open Documentation</h4>
+          <p>Scan-to-view video walkthroughs and technical setup guides available freely for every tool system we release.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
-      Need replacement disks, cordage, or tools?<br>
-      Visit the <a href="https://www.etsy.com" target="_blank">Underproofed Shop</a>
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">Underproofed</div>
+          <div class="footer-tagline">Engineered crafting tools and studio systems. Made in Michigan.</div>
+        </div>
+        <div class="footer-col">
+          <h5>Documentation</h5>
+          <ul>
+            <li><a href="/guides/">Quick-Start Video Guides</a></li>
+            <li><a href="/guides/">Braiding Cheat Sheet</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Commerce</h5>
+          <ul>
+            <li><a href="https://www.etsy.com/shop/YourEtsyShop" target="_blank">Etsy Storefront ↗</a></li>
+            <li><a href="https://tindie.com" target="_blank">Tindie Storefront ↗</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 Underproofed. All rights reserved.</div>
+        <div>Minimal Static Architecture</div>
+      </div>
     </footer>
+
   </div>
 
 </body>

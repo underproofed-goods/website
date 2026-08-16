@@ -47,7 +47,7 @@
     }
 
     /* -------------------------------------------------------------
-       NAVIGATION
+       NAVIGATION & LOGO
        ------------------------------------------------------------- */
     nav {
       border-bottom: 1px solid var(--border);
@@ -65,8 +65,21 @@
       height: 64px;
     }
 
-    .logo {
-      font-size: 1.15rem;
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-logo {
+      height: 24px;
+      width: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    .logo-text {
+      font-size: 1.1rem;
       font-weight: 700;
       letter-spacing: -0.03em;
       text-transform: uppercase;
@@ -141,7 +154,7 @@
     }
 
     /* -------------------------------------------------------------
-       CATEGORY GRID
+       CATEGORY GRID & THUMBNAILS
        ------------------------------------------------------------- */
     .categories {
       padding: 64px 0;
@@ -166,17 +179,38 @@
     .category-card {
       background: var(--surface);
       border: 1px solid var(--border);
-      padding: 40px 32px;
+      padding: 32px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      min-height: 380px;
+      min-height: 460px;
       transition: border-color 0.15s ease, transform 0.15s ease;
     }
 
     .category-card:hover {
       border-color: var(--border-dark);
       transform: translateY(-2px);
+    }
+
+    /* Thumbnail styling */
+    .card-thumb {
+      width: 100%;
+      height: 200px;
+      background: #f0f0f0;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      margin-bottom: 24px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     .card-meta {
@@ -188,18 +222,18 @@
     }
 
     .card-title {
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       font-weight: 700;
       letter-spacing: -0.03em;
       line-height: 1.15;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
     }
 
     .card-desc {
       font-size: 0.95rem;
       color: var(--text-muted);
       line-height: 1.5;
-      margin-bottom: 32px;
+      margin-bottom: 28px;
     }
 
     .card-link {
@@ -213,7 +247,7 @@
     }
 
     /* -------------------------------------------------------------
-       FEATURE / PRINCIPLE STRIP
+       FEATURE STRIP
        ------------------------------------------------------------- */
     .specs-strip {
       padding: 64px 0;
@@ -309,7 +343,7 @@
         grid-template-columns: 1fr;
       }
       .nav-links {
-        display: none; /* Keeps mobile header minimal */
+        display: none;
       }
       .category-card {
         min-height: auto;
@@ -322,12 +356,14 @@
   <!-- Navigation -->
   <nav>
     <div class="container nav-inner">
-      <a href="/" class="logo">Underproofed</a>
+      <a href="/" class="logo-container">
+        <img src="images/underproofedbanner.jpg" alt="Logo" class="brand-logo" onerror="this.style.display='none'">
+      </a>
       <div class="nav-links">
-        <a href="#pottery">Pottery Systems</a>
         <a href="#fiber">Fiber Arts</a>
+        <a href="#pottery">Pottery Systems</a>
         <a href="/guides/">Guides &amp; Videos</a>
-        <a href="https://www.etsy.com/shop/YourEtsyShop" target="_blank" class="btn-etsy">Etsy Shop ↗</a>
+        <a href="https://www.etsy.com/shop/underproofed" target="_blank" class="btn-etsy">Etsy Shop ↗</a>
       </div>
     </div>
   </nav>
@@ -336,9 +372,9 @@
 
     <!-- Hero -->
     <section class="hero">
-      <div class="hero-label">00 / Studio Engineering</div>
-      <h1 class="hero-title">Functional tools designed to eliminate studio friction.</h1>
-      <p class="hero-desc">Engineered studio accessories, wheel throwing systems, and heavy-duty fiber tools fabricated with precision in Michigan.</p>
+      <div class="hero-label">Our Mission</div>
+      <h1 class="hero-title">Keep makers and artists in their flow</h1>
+      <p class="hero-desc">You shouldn't have to fight your tools - the best tool is one you never notice. We engineer and build fiber craft tools and wheel-throwing systems in Michigan, USA.</p>
     </section>
 
     <!-- Product Lines -->
@@ -346,24 +382,30 @@
       <div class="section-label">Selected Categories</div>
       <div class="grid-2">
 
-        <!-- Category 1: Ceramic -->
-        <a href="https://www.etsy.com/shop/YourEtsyShop" target="_blank" class="category-card" id="pottery">
+        <!-- 01: FIBER ARTS (NOW FIRST) -->
+        <a href="https://www.etsy.com/shop/underproofed" target="_blank" class="category-card" id="fiber">
           <div>
-            <div class="card-meta">01 / CERAMIC SYSTEMS</div>
-            <h2 class="card-title">Wheel Bats &amp; Modular Inserts</h2>
-            <p class="card-desc">Water-resistant throwing bat systems featuring mechanical tile ejection. Built for high-volume studio production without warping or stuck pieces.</p>
-          </div>
-          <div class="card-link">View Systems on Etsy ↗</div>
-        </a>
-
-        <!-- Category 2: Fiber -->
-        <a href="https://www.etsy.com/shop/YourEtsyShop" target="_blank" class="category-card" id="fiber">
-          <div>
-            <div class="card-meta">02 / FIBER ARTS</div>
+            <div class="card-thumb">
+              <img src="images/disks.jpg" alt="HimoGrip and Para16 Braiding Looms" onerror="this.parentElement.style.background='#f0f0f0'">
+            </div>
+            <div class="card-meta">01 / FIBER ARTS</div>
             <h2 class="card-title">HimoGrip &amp; Para16 Braiding Looms</h2>
-            <p class="card-desc">Rigid Kumihimo disks engineered for standard thread and heavy 550 paracord. Consistent slot tension that won't degrade like soft foam.</p>
+            <p class="card-desc">Rigid Kumihimo disks engineered for standard thread and heavy 550 paracord. Delivers consistent slot tension that won't degrade like soft foam.</p>
           </div>
           <div class="card-link">View Tools &amp; Kits on Etsy ↗</div>
+        </a>
+
+        <!-- 02: CERAMIC SYSTEMS (NOW SECOND) -->
+        <a href="https://www.etsy.com/shop/underproofed" target="_blank" class="category-card" id="pottery">
+          <div>
+            <div class="card-thumb">
+              <img src="images/bat_system.jpg" alt="Pottery Tile Bat System" onerror="this.parentElement.style.background='#f0f0f0'">
+            </div>
+            <div class="card-meta">02 / CERAMIC SYSTEMS</div>
+            <h2 class="card-title">Wheel Bats &amp; Modular Inserts</h2>
+            <p class="card-desc">Coming soon: 6" tile bat systems featuring mechanical tile ejection. Built for high-volume studio production without warping or stuck pieces.</p>
+          </div>
+          <div class="card-link">View Systems on Etsy ↗</div>
         </a>
 
       </div>
@@ -378,11 +420,11 @@
         </div>
         <div class="spec-item">
           <h4>Material Durability</h4>
-          <p>Constructed with impact-resistant, non-hygroscopic technical polymers that resist water absorption, warping, and layer fatigue.</p>
+          <p>Constructed with impact-resistant technical polymers that resist water absorption, warping, and layer fatigue.</p>
         </div>
         <div class="spec-item">
           <h4>Open Documentation</h4>
-          <p>Scan-to-view video walkthroughs and technical setup guides available freely for every tool system we release.</p>
+          <p>Coming Soon: Scan-to-view video walkthroughs and technical setup guides available freely for every tool system we release.</p>
         </div>
       </div>
     </section>
@@ -391,28 +433,26 @@
     <footer>
       <div class="footer-grid">
         <div>
-          <div class="footer-brand">Underproofed</div>
-          <div class="footer-tagline">Engineered crafting tools and studio systems. Made in Michigan.</div>
+
         </div>
         <div class="footer-col">
           <h5>Documentation</h5>
           <ul>
-            <li><a href="/guides/">Quick-Start Video Guides</a></li>
-            <li><a href="/guides/">Braiding Cheat Sheet</a></li>
+			<li>Coming Soon</li>
+            <!--<li><a href="/guides/">Quick-Start Video Guides</a></li>
+            <li><a href="/guides/">Braiding Cheat Sheet</a></li>  -->
           </ul>
         </div>
         <div class="footer-col">
           <h5>Commerce</h5>
           <ul>
-            <li><a href="https://www.etsy.com/shop/YourEtsyShop" target="_blank">Etsy Storefront ↗</a></li>
-            <li><a href="https://tindie.com" target="_blank">Tindie Storefront ↗</a></li>
+            <li><a href="https://www.etsy.com/shop/underproofed" target="_blank">Etsy Storefront ↗</a></li>
           </ul>
         </div>
       </div>
 
       <div class="footer-bottom">
         <div>&copy; 2026 Underproofed. All rights reserved.</div>
-        <div>Minimal Static Architecture</div>
       </div>
     </footer>
 

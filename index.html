@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"><head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Underproofed — Engineered Studio Tools</title>
@@ -342,6 +340,20 @@
       font-size: 0.85rem;
       color: var(--text-muted);
       max-width: 320px;
+      margin-bottom: 16px;
+    }
+
+    .footer-contact {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .footer-contact a {
+      transition: color 0.15s ease;
+    }
+
+    .footer-contact a:hover {
+      color: var(--text-main);
     }
 
     .footer-col h5 {
@@ -357,17 +369,27 @@
     }
 
     .footer-col li {
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       font-size: 0.85rem;
     }
 
     .footer-col a {
       color: var(--text-muted);
       transition: color 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
 
     .footer-col a:hover {
       color: var(--text-main);
+    }
+
+    .social-icon {
+      width: 15px;
+      height: 15px;
+      display: inline-block;
+      vertical-align: middle;
     }
 
     .footer-bottom {
@@ -375,8 +397,11 @@
       padding-top: 24px;
       display: flex;
       justify-content: space-between;
+      align-items: center;
       font-size: 0.75rem;
       color: var(--text-muted);
+      flex-wrap: gap;
+      gap: 12px;
     }
 
     /* -------------------------------------------------------------
@@ -395,6 +420,10 @@
       .category-card {
         min-height: auto;
       }
+      .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
   </style>
 </head>
@@ -407,7 +436,7 @@
         <img src="images/underproofedbanner.jpg" alt="Logo" class="brand-logo" onerror="this.style.display='none'">
       </a>
       <div class="nav-links">
-        <a href="#fiber">Fiber Arts</a>
+        <a href="#fiber">Fiber Tools</a>
         <a href="#pottery">Pottery Systems</a>
         <a href="/guides/">Guides &amp; Videos</a>
         <a href="https://www.etsy.com/shop/underproofed" target="_blank" class="btn-etsy">Etsy Shop ↗</a>
@@ -423,7 +452,7 @@
         <div class="hero-content">
           <div class="hero-label">Our mission is simple:</div>
           <h1 class="hero-title">Keep makers and artists in their flow</h1>
-          <p class="hero-desc">You shouldn't have to fight your tools — the best tool is one you never notice. We engineer and build fiber craft tools and wheel-throwing systems in Michigan, USA.</p>
+          <p class="hero-desc">You shouldn't have to fight your tools — the best tool is one you never notice. We engineer and build fiber craft tools and wheel-throwing systems in Michigan, USA. Created for makers, by makers.</p>
         </div>
         <div class="hero-image-container">
           <div class="hero-image-placeholder">
@@ -439,30 +468,30 @@
       <div class="section-label">Selected Categories</div>
       <div class="grid-2">
 
-        <!-- 01: FIBER ARTS -->
+        <!-- 01: FIBER TOOLS -->
         <a href="https://www.etsy.com/shop/underproofed" target="_blank" class="category-card" id="fiber">
           <div>
             <div class="card-thumb">
               <img src="images/disks.jpg" alt="HimoGrip and Para16 Braiding Looms" onerror="this.parentElement.style.background='#f0f0f0'">
             </div>
-            <div class="card-meta">01 / FIBER ARTS</div>
+            <div class="card-meta">01 / FIBER TOOLS</div>
             <h2 class="card-title">HimoGrip &amp; Para16 Braiding Looms</h2>
             <p class="card-desc">Rigid Kumihimo disks engineered for standard thread and heavy 550 paracord. Delivers consistent slot tension that won't degrade like soft foam.</p>
           </div>
           <div class="card-link">View Tools &amp; Kits on Etsy ↗</div>
         </a>
 
-        <!-- 02: CERAMIC SYSTEMS -->
+        <!-- 02: CERAMICS TOOLS -->
         <a href="https://www.etsy.com/shop/underproofed" target="_blank" class="category-card" id="pottery">
           <div>
             <div class="card-thumb">
               <img src="images/bat_system.jpg" alt="Pottery Tile Bat System" onerror="this.parentElement.style.background='#f0f0f0'">
             </div>
-            <div class="card-meta">02 / CERAMIC SYSTEMS</div>
+            <div class="card-meta">02 / CERAMICS TOOLS</div>
             <h2 class="card-title">Wheel Bats &amp; Modular Inserts</h2>
             <p class="card-desc">Coming soon: 6" tile bat systems featuring mechanical tile ejection. Built for high-volume studio production without warping or stuck pieces.</p>
           </div>
-          <div class="card-link">View Systems on Etsy ↗</div>
+          <div class="card-link">Coming soon on Etsy ↗</div>
         </a>
 
       </div>
@@ -472,16 +501,16 @@
     <section class="specs-strip">
       <div class="specs-grid">
         <div class="spec-item">
-          <h4>Engineered Tolerances</h4>
-          <p>Every tool is dimensionally modeled and fabricated to hold rigid mechanical tolerances under wet or high-tension studio conditions.</p>
+          <h4>Engineered Quality</h4>
+          <p>Each tool is designed and fabricated to function perfectly, every time, for a long time.</p>
         </div>
         <div class="spec-item">
-          <h4>Material Durability</h4>
-          <p>Constructed with impact-resistant technical polymers that resist water absorption, warping, and layer fatigue.</p>
+          <h4>Durable Materials</h4>
+          <p>We choose tough technical polymers that resist water absorption, warping, and fatigue.</p>
         </div>
         <div class="spec-item">
-          <h4>Open Documentation</h4>
-          <p>Coming Soon: Scan-to-view video walkthroughs and technical setup guides available freely for every tool system we release.</p>
+          <h4>Accessible Documentation</h4>
+          <p>Coming Soon: Video walkthroughs and technical setup guides for every tool system we release.</p>
         </div>
       </div>
     </section>
@@ -489,7 +518,13 @@
     <!-- Footer -->
     <footer>
       <div class="footer-grid">
-        <div></div>
+        <div>
+          <div class="footer-brand">Underproofed</div>
+          <p class="footer-tagline">Engineered studio tools for makers and artists.</p>
+          <div class="footer-contact">
+            <a href="mailto:support@underproofed.com">support@underproofed.com</a>
+          </div>
+        </div>
         <div class="footer-col">
           <h5>Documentation</h5>
           <ul>
@@ -497,19 +532,31 @@
           </ul>
         </div>
         <div class="footer-col">
-          <h5>Commerce</h5>
+          <h5>Connect</h5>
           <ul>
             <li><a href="https://www.etsy.com/shop/underproofed" target="_blank">Etsy Storefront ↗</a></li>
+            <li>
+              <a href="https://www.instagram.com/underproofed.goods" target="_blank" rel="noopener noreferrer">
+                <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+                <span>Instagram ↗</span>
+              </a>
+            </li>
           </ul>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <div>&copy; 2026 Underproofed. All rights reserved.</div>
+        <div>© 2026 Underproofed. All rights reserved.</div>
+        <div><a href="mailto:support@underproofed.com" style="color: var(--text-muted);">support@underproofed.com</a></div>
       </div>
     </footer>
 
   </div>
 
-</body>
-</html>
+
+
+</body></html>

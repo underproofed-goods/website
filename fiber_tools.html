@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Underproofed — Engineered Studio Tools</title>
+  <title>Fiber Craft Tools — Underproofed</title>
   <style>
     /* -------------------------------------------------------------
        SWISS TYPOGRAPHIC FOUNDATION
@@ -77,13 +78,6 @@
       object-fit: contain;
     }
 
-    .logo-text {
-      font-size: 1.1rem;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      text-transform: uppercase;
-    }
-
     .nav-links {
       display: flex;
       gap: 28px;
@@ -97,7 +91,8 @@
       transition: color 0.15s ease;
     }
 
-    .nav-links a:hover {
+    .nav-links a:hover,
+    .nav-links a.active {
       color: var(--text-muted);
     }
 
@@ -120,21 +115,14 @@
     }
 
     /* -------------------------------------------------------------
-       HERO SECTION
+       HEADER / BREADCRUMB
        ------------------------------------------------------------- */
-    .hero {
-      padding: 80px 0 64px;
+    .page-header {
+      padding: 64px 0 48px;
       border-bottom: 1px solid var(--border);
     }
 
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 48px;
-      align-items: center;
-    }
-
-    .hero-label {
+    .breadcrumb {
       font-size: 0.75rem;
       font-weight: 700;
       letter-spacing: 0.08em;
@@ -143,63 +131,25 @@
       margin-bottom: 16px;
     }
 
-    .hero-title {
+    .page-title {
       font-size: clamp(2rem, 3.8vw, 3.2rem);
       font-weight: 700;
       line-height: 1.1;
       letter-spacing: -0.04em;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
 
-    .hero-desc {
+    .page-desc {
       font-size: 1.05rem;
       line-height: 1.55;
       color: var(--text-muted);
-    }
-
-    .hero-image-container {
-      width: 100%;
-    }
-
-    .hero-image-placeholder {
-      width: 100%;
-      aspect-ratio: 4 / 3;
-      min-height: 280px;
-      background-color: #f0f0f0;
-      border: 1px solid var(--border);
-      border-radius: 2px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
-
-    .hero-image-placeholder img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .hero-image-placeholder .placeholder-tag {
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      background: rgba(255, 255, 255, 0.85);
-      padding: 6px 12px;
-      border: 1px solid var(--border);
-      border-radius: 2px;
-      pointer-events: none;
+      max-width: 680px;
     }
 
     /* -------------------------------------------------------------
-       CATEGORY GRID & THUMBNAILS
+       PRODUCT GRID (3 COLUMNS)
        ------------------------------------------------------------- */
-    .categories {
+    .product-section {
       padding: 64px 0;
       border-bottom: 1px solid var(--border);
     }
@@ -213,36 +163,35 @@
       margin-bottom: 32px;
     }
 
-    .grid-2 {
+    .grid-3 {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(3, 1fr);
       gap: 24px;
     }
 
-    .category-card {
+    .product-card {
       background: var(--surface);
       border: 1px solid var(--border);
-      padding: 32px;
+      padding: 28px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      min-height: 460px;
+      min-height: 520px;
       transition: border-color 0.15s ease, transform 0.15s ease;
     }
 
-    .category-card:hover {
+    .product-card:hover {
       border-color: var(--border-dark);
       transform: translateY(-2px);
     }
 
-    /* Thumbnail styling */
     .card-thumb {
       width: 100%;
-      height: 200px;
+      height: 220px;
       background: #f0f0f0;
       border: 1px solid var(--border);
       border-radius: 2px;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
       overflow: hidden;
       display: flex;
       align-items: center;
@@ -257,40 +206,42 @@
     }
 
     .card-meta {
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       font-weight: 700;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
       color: var(--text-muted);
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .card-title {
-      font-size: 1.6rem;
+      font-size: 1.35rem;
       font-weight: 700;
       letter-spacing: -0.03em;
-      line-height: 1.15;
+      line-height: 1.2;
       margin-bottom: 12px;
     }
 
     .card-desc {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       color: var(--text-muted);
       line-height: 1.5;
-      margin-bottom: 28px;
+      margin-bottom: 24px;
     }
 
     .card-link {
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       font-weight: 700;
       letter-spacing: 0.04em;
       text-transform: uppercase;
       display: inline-flex;
       align-items: center;
       gap: 6px;
+      margin-top: auto;
     }
 
     /* -------------------------------------------------------------
-       FEATURE STRIP
+       SPECIFICATIONS / SYSTEM STRIP
        ------------------------------------------------------------- */
     .specs-strip {
       padding: 64px 0;
@@ -409,18 +360,18 @@
     /* -------------------------------------------------------------
        RESPONSIVE
        ------------------------------------------------------------- */
-    @media (max-width: 768px) {
-      .hero-grid, .grid-2, .specs-grid, .footer-grid {
+    @media (max-width: 900px) {
+      .grid-3 {
         grid-template-columns: 1fr;
       }
-      .hero-grid {
-        gap: 32px;
+      .specs-grid, .footer-grid {
+        grid-template-columns: 1fr;
+      }
+      .product-card {
+        min-height: auto;
       }
       .nav-links {
         display: none;
-      }
-      .category-card {
-        min-height: auto;
       }
       .footer-bottom {
         flex-direction: column;
@@ -438,8 +389,8 @@
         <img src="images/underproofedbanner.png" alt="Logo" class="brand-logo" onerror="this.style.display='none'">
       </a>
       <div class="nav-links">
-        <a href="#fiber">Fiber Craft Tools</a>
-        <a href="#pottery">Pottery Systems</a>
+        <a href="/fiber/" class="active">Fiber Craft Tools</a>
+        <a href="/#pottery">Pottery Systems</a>
         <a href="/guides/">Guides &amp; Videos</a>
         <a href="https://www.etsy.com/shop/underproofed" target="_blank" class="btn-etsy">Etsy Shop ↗</a>
       </div>
@@ -448,52 +399,55 @@
 
   <div class="container">
 
-    <!-- Hero -->
-    <section class="hero">
-      <div class="hero-grid">
-        <div class="hero-content">
-          <div class="hero-label">Our mission is simple:</div>
-          <h1 class="hero-title">Keep makers and artists in their flow</h1>
-          <p class="hero-desc">You shouldn't have to fight your tools — the best tool is one you never notice. We engineer and build fiber craft tools and wheel-throwing systems in Michigan, USA. Created for makers, by makers.</p>
-        </div>
-        <div class="hero-image-container">
-          <div class="hero-image-placeholder">
-            <img src="images/herodisks.jpg" alt="Underproofed Studio Gear" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-            <span class="placeholder-tag" style="display: none;">Studio Photo Placeholder</span>
-          </div>
-        </div>
-      </div>
-    </section>
+    <!-- Page Header -->
+    <header class="page-header">
+      <div class="breadcrumb">Category / 01</div>
+      <h1 class="page-title">Fiber Craft Tools</h1>
+      <p class="page-desc">Precision braiding disks and accessories engineered to replace degrading foam looms. Designed for exact tension control, repeatability, and long-term durability.</p>
+    </header>
 
-    <!-- Product Lines -->
-    <section class="categories">
-      <div class="section-label">Selected Categories</div>
-      <div class="grid-2">
+    <!-- Product Grid -->
+    <section class="product-section">
+      <div class="section-label">Tools &amp; Accessories</div>
+      <div class="grid-3">
 
-        <!-- 01: Fiber Craft Tools -->
-        <a href="https://www.etsy.com/shop/underproofed" target="_blank" class="category-card" id="fiber">
+        <!-- 01: Traditional HimoGrip -->
+        <a href="/fiber/himogrip.html" class="product-card">
           <div>
             <div class="card-thumb">
-              <img src="images/disks.jpg" alt="HimoGrip and Para16 Braiding Looms" onerror="this.parentElement.style.background='#f0f0f0'">
+              <img src="images/himogrip.jpg" alt="Traditional HimoGrip Kumihimo Disk" onerror="this.parentElement.style.background='#f0f0f0'">
             </div>
-            <div class="card-meta">01 / Fiber Craft Tools</div>
-            <h2 class="card-title">HimoGrip &amp; Para16 Braiding Looms</h2>
-            <p class="card-desc">Rigid Kumihimo disks engineered for standard thread and heavy 550 paracord. Delivers consistent slot tension that won't degrade like soft foam.</p>
+            <div class="card-meta">01 / Kumihimo Loom</div>
+            <h2 class="card-title">Traditional HimoGrip</h2>
+            <p class="card-desc">Engineered for fine cords, embroidery floss, and micro-cords. Maintains calibrated slot resistance without stretching or losing grip over time.</p>
           </div>
-          <div class="card-link">View Tools &amp; Kits on Etsy ↗</div>
+          <div class="card-link">View Product Details →</div>
         </a>
 
-        <!-- 02: CERAMICS TOOLS -->
-        <a href="https://www.etsy.com/shop/underproofed" target="_blank" class="category-card" id="pottery">
+        <!-- 02: Para 16 -->
+        <a href="/fiber/para16.html" class="product-card">
           <div>
             <div class="card-thumb">
-              <img src="images/bat_system.jpg" alt="Pottery Tile Bat System" onerror="this.parentElement.style.background='#f0f0f0'">
+              <img src="images/para16.jpg" alt="Para 16 Paracord Braiding Loom" onerror="this.parentElement.style.background='#f0f0f0'">
             </div>
-            <div class="card-meta">02 / CERAMICS TOOLS</div>
-            <h2 class="card-title">Wheel Bats &amp; Modular Inserts</h2>
-            <p class="card-desc">Coming soon: 6" tile bat systems featuring mechanical tile ejection. Built for high-volume studio production without warping or stuck pieces.</p>
+            <div class="card-meta">02 / Paracord Loom</div>
+            <h2 class="card-title">Para 16</h2>
+            <p class="card-desc">Rigid braiding disk optimized specifically for heavy 550 paracord and thick cords. High-clearance center bore and reinforced structural teeth.</p>
           </div>
-          <div class="card-link">Coming soon on Etsy ↗</div>
+          <div class="card-link">View Product Details →</div>
+        </a>
+
+        <!-- 03: Weighted / Spring Bobbins -->
+        <a href="/fiber/bobbins.html" class="product-card">
+          <div>
+            <div class="card-thumb">
+              <img src="images/bobbins.jpg" alt="Fiber Craft Bobbins" onerror="this.parentElement.style.background='#f0f0f0'">
+            </div>
+            <div class="card-meta">03 / Strand Management</div>
+            <h2 class="card-title">Braiding Bobbins</h2>
+            <p class="card-desc">Stackable, smooth-release bobbins designed to prevent tangling during multi-strand setups. Keeps long fiber runs organized and accessible.</p>
+          </div>
+          <div class="card-link">View Product Details →</div>
         </a>
 
       </div>
@@ -503,16 +457,16 @@
     <section class="specs-strip">
       <div class="specs-grid">
         <div class="spec-item">
-          <h4>Engineered Quality</h4>
-          <p>Each tool is designed and fabricated to function perfectly, every time, for a long time.</p>
+          <h4>Zero-Fatigue Slots</h4>
+          <p>Unlike soft EVA foam disks that stretch out after a few projects, our rigid slots maintain exact gripping pressure indefinitely.</p>
         </div>
         <div class="spec-item">
-          <h4>Durable Materials</h4>
-          <p>We choose tough technical polymers that resist water absorption, warping, and fatigue.</p>
+          <h4>Smooth Strand Release</h4>
+          <p>Chamfered guide paths prevent strand snagging, fraying, and friction burn on delicate threads and nylon cords.</p>
         </div>
         <div class="spec-item">
-          <h4>Accessible Documentation</h4>
-          <p>Coming Soon: Video walkthroughs and technical setup guides for every tool system we release.</p>
+          <h4>Technical Polymers</h4>
+          <p>Fabricated using dense, durable plastics engineered to withstand continuous friction, pressure, and studio wear.</p>
         </div>
       </div>
     </section>
@@ -561,4 +515,5 @@
 
   </div>
 
-</body></html>
+</body>
+</html>

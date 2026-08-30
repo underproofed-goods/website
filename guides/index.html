@@ -1,14 +1,12 @@
-<!-- COMING SOON: Video walkthroughs and interactive guides are currently in production -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Underproofed — Quick-Start Braiding Guides</title>
+  <title>Underproofed — Guides & Tutorials</title>
+  <link rel="icon" type="image/png" href="../iconu.png">
+
   <style>
-    /* -------------------------------------------------------------
-       SWISS TYPOGRAPHIC FOUNDATION
-       ------------------------------------------------------------- */
     :root {
       --bg: #fcfcfc;
       --surface: #ffffff;
@@ -16,7 +14,6 @@
       --text-muted: #666666;
       --border: #e2e2e2;
       --border-dark: #111111;
-      --accent: #000000;
       --accent-hover: #333333;
     }
 
@@ -31,7 +28,6 @@
       background-color: var(--bg);
       color: var(--text-main);
       -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
       line-height: 1.45;
       padding-bottom: 80px;
     }
@@ -42,14 +38,11 @@
     }
 
     .container {
-      max-width: 760px;
+      max-width: 1120px;
       margin: 0 auto;
       padding: 0 24px;
     }
 
-    /* -------------------------------------------------------------
-       NAVIGATION & LOGO
-       ------------------------------------------------------------- */
     nav {
       border-bottom: 1px solid var(--border);
       position: sticky;
@@ -57,37 +50,19 @@
       background: rgba(252, 252, 252, 0.95);
       backdrop-filter: blur(8px);
       z-index: 100;
-      margin-bottom: 56px;
     }
 
     .nav-inner {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 0 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       height: 64px;
     }
 
-    .logo-container {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
     .brand-logo {
       height: 24px;
       width: auto;
       display: block;
-      object-fit: contain;
-    }
-
-    .logo-text {
-      font-size: 1.1rem;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      text-transform: uppercase;
     }
 
     .nav-links {
@@ -96,11 +71,6 @@
       align-items: center;
       font-size: 0.85rem;
       font-weight: 500;
-      letter-spacing: 0.02em;
-    }
-
-    .nav-links a {
-      transition: color 0.15s ease;
     }
 
     .nav-links a:hover {
@@ -108,16 +78,13 @@
     }
 
     .btn-etsy {
-      display: inline-block;
       background: var(--border-dark);
       color: #ffffff;
       padding: 8px 16px;
       border-radius: 2px;
       font-size: 0.8rem;
       font-weight: 600;
-      letter-spacing: 0.04em;
       text-transform: uppercase;
-      transition: background-color 0.15s ease;
     }
 
     .btn-etsy:hover {
@@ -125,287 +92,187 @@
       color: #ffffff;
     }
 
-    /* -------------------------------------------------------------
-       HEADER
-       ------------------------------------------------------------- */
-    header {
-      padding-bottom: 40px;
+    .page-header {
+      padding: 64px 0 40px;
       border-bottom: 1px solid var(--border);
-      margin-bottom: 48px;
     }
 
-    .header-label {
-      font-size: 0.75rem;
+    .page-title {
+      font-size: clamp(2rem, 3vw, 2.8rem);
       font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 16px;
-    }
-
-    .header-title {
-      font-size: clamp(1.8rem, 4vw, 2.6rem);
-      font-weight: 700;
-      line-height: 1.1;
       letter-spacing: -0.04em;
       margin-bottom: 12px;
     }
 
-    .header-desc {
+    .page-desc {
       font-size: 1.05rem;
       color: var(--text-muted);
-      line-height: 1.5;
     }
 
-    /* -------------------------------------------------------------
-       SECTION STYLING
-       ------------------------------------------------------------- */
-    .section-label {
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 24px;
+    .categories {
+      padding: 64px 0;
     }
 
-    /* -------------------------------------------------------------
-       GUIDE CARDS
-       ------------------------------------------------------------- */
-    .guides-list {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      margin-bottom: 48px;
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
     }
 
-    .guide-card {
+    .category-card {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 2px;
-      padding: 24px;
+      padding: 32px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      justify-content: space-between;
+      min-height: 280px;
       transition: border-color 0.15s ease, transform 0.15s ease;
-      color: inherit;
     }
 
-    .guide-card:hover {
+    .category-card:hover {
       border-color: var(--border-dark);
       transform: translateY(-2px);
     }
 
-    .card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 16px;
+    .card-meta {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-bottom: 12px;
     }
 
     .card-title {
-      font-size: 1.15rem;
+      font-size: 1.6rem;
       font-weight: 700;
-      letter-spacing: -0.02em;
-      color: var(--text-main);
-    }
-
-    .badge {
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      padding: 3px 8px;
-      border-radius: 2px;
-      background: #f0f0f0;
-      border: 1px solid var(--border);
-      color: var(--text-muted);
-      white-space: nowrap;
+      letter-spacing: -0.03em;
+      margin-bottom: 12px;
     }
 
     .card-desc {
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       color: var(--text-muted);
-      line-height: 1.5;
+      margin-bottom: 24px;
     }
 
     .card-link {
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       font-weight: 700;
-      letter-spacing: 0.04em;
       text-transform: uppercase;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      margin-top: 4px;
-      color: var(--text-main);
     }
 
-    /* -------------------------------------------------------------
-       CHEAT SHEET MODULE
-       ------------------------------------------------------------- */
-    .cheatsheet {
-      background: var(--surface);
-      border: 1px solid var(--border-dark);
-      border-radius: 2px;
-      padding: 28px;
-      margin-bottom: 56px;
-    }
-
-    .cheatsheet-meta {
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 8px;
-    }
-
-    .cheatsheet h3 {
-      font-size: 1.25rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 20px;
-    }
-
-    .step-list {
-      padding-left: 20px;
-      font-size: 0.9rem;
-      color: var(--text-main);
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .step-list li {
-      line-height: 1.5;
-    }
-
-    .step-list strong {
-      font-weight: 700;
-    }
-
-    /* -------------------------------------------------------------
-       FOOTER
-       ------------------------------------------------------------- */
     footer {
+      padding: 64px 0 24px;
       border-top: 1px solid var(--border);
-      padding-top: 32px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 48px;
+    }
+
+    .footer-logo { height: 24px; margin-bottom: 12px; }
+    .footer-tagline { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px; }
+    .footer-col h5 { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 10px; font-size: 0.85rem; }
+    .footer-col a { color: var(--text-muted); }
+    .footer-col a:hover { color: var(--text-main); }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      font-size: 0.85rem;
+      font-size: 0.75rem;
       color: var(--text-muted);
-    }
-
-    footer a {
-      color: var(--text-main);
-      font-weight: 600;
-      text-decoration: underline;
-      text-underline-offset: 3px;
     }
 
     @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-      }
-      footer {
-        flex-direction: column;
-        gap: 16px;
-        align-items: flex-start;
-      }
+      .grid-2, .footer-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Navigation -->
   <nav>
-    <div class="nav-inner">
-      <a href="/" class="logo-container">
-        <img src="images/underproofedbanner.jpg" alt="Logo" class="brand-logo" onerror="this.style.display='none'">
+    <div class="container nav-inner">
+      <a href="../index.html">
+        <img src="../images/underproofedbanner.png" alt="Underproofed Logo" class="brand-logo" onerror="this.style.display='none'">
       </a>
       <div class="nav-links">
-        <a href="/#fiber">Fiber Arts</a>
-        <a href="/#pottery">Pottery Systems</a>
-        <a href="/guides/">Guides &amp; Videos</a>
-        <a href="https://www.etsy.com/shop/underproofed" target="_blank" class="btn-etsy">Etsy Shop ↗</a>
+        <a href="../fiber_tools.html">Fiber Craft Tools</a>
+        <a href="../index.html#pottery">Ceramics Tools</a>
+        <a href="../about.html">About Us</a>
+        <a href="index.html">Guides &amp; Videos</a>
+        <a href="https://www.etsy.com/shop/underproofed?utm_source=underproofed_com&utm_medium=referral&utm_campaign=shop_cta" target="_blank" class="btn-etsy">Etsy Shop ↗</a>
       </div>
     </div>
   </nav>
 
   <div class="container">
-    
-    <!-- Header -->
-    <header>
-      <div class="header-label">Documentation (Coming Soon)</div>
-      <h1 class="header-title">Quick-Start Video Guides &amp; Patterns</h1>
-      <p class="header-desc">Technical setup guides, cord loading walkthroughs, and core braiding rhythms for Underproofed fiber tools.</p>
+    <header class="page-header">
+      <h1 class="page-title">Guides &amp; Technical Documentation</h1>
+      <p class="page-desc">Setup instructions, configuration guides, and care instructions for Underproofed studio tools.</p>
     </header>
 
-    <!-- Video Guides List -->
-    <div class="section-label">01 / Video Walkthroughs</div>
-    <div class="guides-list">
+    <section class="categories">
+      <div class="grid-2">
 
-      <!-- Guide 1 -->
-      <a href="https://www.youtube.com" target="_blank" class="guide-card">
-        <div class="card-header">
-          <h2 class="card-title">1. Winding &amp; Setting Bobbins</h2>
-          <span class="badge">45 sec</span>
-        </div>
-        <p class="card-desc">How to load cords into silicone bobbins to maintain clean, tangle-free tension during operation.</p>
-        <div class="card-link">Watch Video ↗</div>
-      </a>
+        <a href="kumihimo.html" class="category-card">
+          <div>
+            <div class="card-meta">01 / FIBER CRAFT TOOLS</div>
+            <h2 class="card-title">Kumihimo Braiding Guides</h2>
+            <p class="card-desc">Complete tutorials for setting up your disk, managing strand tension, and mastering various braid structures.</p>
+          </div>
+          <div class="card-link">View Kumihimo Guide &rarr;</div>
+        </a>
 
-      <!-- Guide 2 -->
-      <a href="https://www.youtube.com" target="_blank" class="guide-card">
-        <div class="card-header">
-          <h2 class="card-title">2. Basic 8-Strand Round Braid</h2>
-          <span class="badge">60 sec</span>
-        </div>
-        <p class="card-desc">The core "Right-Down, Left-Up" sequence using the HimoGrip disk.</p>
-        <div class="card-link">Watch Video ↗</div>
-      </a>
+        <a href="batsystem.html" class="category-card">
+          <div>
+            <div class="card-meta">02 / CERAMICS TOOLS</div>
+            <h2 class="card-title">Tile Bat System Guides</h2>
+            <p class="card-desc">Setup instructions for pottery tile bat adapters.</p>
+          </div>
+          <div class="card-link">View Tile Bat Guide &rarr;</div>
+        </a>
 
-      <!-- Guide 3 -->
-      <a href="https://www.youtube.com" target="_blank" class="guide-card">
-        <div class="card-header">
-          <h2 class="card-title">3. Para16 Heavy Cord Setup</h2>
-          <span class="badge">60 sec</span>
-        </div>
-        <p class="card-desc">Managing 550 paracord slot tension and working with heavy multi-strand cords.</p>
-        <div class="card-link">Watch Video ↗</div>
-      </a>
+      </div>
+    </section>
 
-      <!-- Guide 4 -->
-      <a href="https://www.youtube.com" target="_blank" class="guide-card">
-        <div class="card-header">
-          <h2 class="card-title">4. Finishing &amp; Casting Off</h2>
-          <span class="badge">45 sec</span>
-        </div>
-        <p class="card-desc">Securing braid ends, tension relief, trimming, and mounting end-caps or hardware.</p>
-        <div class="card-link">Watch Video ↗</div>
-      </a>
-
-    </div>
-
-    <!-- Quick Reference Cheat Sheet -->
-    <div class="cheatsheet">
-      <div class="cheatsheet-meta">02 / Technical Reference</div>
-      <h3>Quick Rhythm Reference</h3>
-      <ol class="step-list">
-        <li><strong>Top-Right:</strong> Move strand straight down to bottom-right slot.</li>
-        <li><strong>Bottom-Left:</strong> Move strand straight up to top-left slot.</li>
-        <li><strong>Rotate:</strong> Turn disk 90° counter-clockwise and repeat sequence.</li>
-      </ol>
-    </div>
-
-    <!-- Footer -->
     <footer>
-      <div>Need replacement disks, hardware, or tools?</div>
-      <div><a href="https://www.etsy.com/shop/underproofed" target="_blank">Visit the Etsy Storefront ↗</a></div>
+      <div class="footer-grid">
+        <div>
+          <a href="../index.html">
+            <img src="../images/underproofedbanner.png" alt="Underproofed Logo" class="footer-logo" onerror="this.style.display='none'">
+          </a>
+          <p class="footer-tagline">Engineered studio tools for makers and artists.</p>
+          <div class="footer-contact"><a href="mailto:contact@underproofed.com">contact@underproofed.com</a></div>
+        </div>
+        <div class="footer-col">
+          <h5>Documentation</h5>
+          <ul>
+            <li><a href="kumihimo.html">Kumihimo Guide</a></li>
+            <li><a href="batsystem.html">Tile Bat System Guide</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Connect</h5>
+          <ul>
+            <li><a href="https://www.etsy.com/shop/underproofed?utm_source=underproofed_com&utm_medium=referral&utm_campaign=shop_cta" target="_blank">Etsy Storefront ↗</a></li>
+            <li><a href="https://www.instagram.com/underproofed.goods" target="_blank">Instagram ↗</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>© 2026 Underproofed. All rights reserved.</div>
+        <div><a href="mailto:contact@underproofed.com">contact@underproofed.com</a></div>
+      </div>
     </footer>
-
   </div>
 
 </body>

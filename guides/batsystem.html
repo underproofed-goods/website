@@ -70,40 +70,16 @@
     .guide-section p { font-size: 1rem; color: var(--text-muted); margin-bottom: 16px; line-height: 1.6; }
 
     figure { margin: 24px 0; background: #f0f0f0; border: 1px solid var(--border); border-radius: 2px; overflow: hidden; }
-    figure video { width: 100%; display: block; height: auto; }
+    figure video, figure img { width: 100%; display: block; height: auto; }
     figcaption { padding: 12px; font-size: 0.8rem; color: var(--text-muted); background: var(--surface); border-top: 1px solid var(--border); }
 
-    /* Alignment Table Styling & High-Visibility Images */
+    /* Alignment Table Styling */
     .table-container { overflow-x: auto; margin-top: 24px; }
     table { width: 100%; border-collapse: collapse; font-size: 0.9rem; background: var(--surface); border: 1px solid var(--border); }
     th, td { padding: 16px 20px; text-align: left; border-bottom: 1px solid var(--border); vertical-align: middle; }
     th { background: #f7f7f7; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
     tr:last-child td { border-bottom: none; }
     
-    /* Expanded diagram column styling with interactive zoom */
-    .td-img { width: 220px; text-align: center; position: relative; }
-    
-    .diagram-thumb {
-      width: 200px;
-      height: 200px;
-      object-fit: contain;
-      display: block;
-      margin: 0 auto;
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      background-color: #ffffff;
-      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
-      cursor: zoom-in;
-    }
-
-    .diagram-thumb:hover {
-      transform: scale(1.6);
-      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
-      border-color: var(--border-dark);
-      z-index: 50;
-      position: relative;
-    }
-
     footer { padding: 64px 0 24px; border-top: 1px solid var(--border); }
     .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 48px; }
     .footer-logo { height: 24px; margin-bottom: 12px; }
@@ -118,7 +94,6 @@
     @media (max-width: 768px) {
       .footer-grid { grid-template-columns: 1fr; }
       .nav-links { display: none; }
-      .diagram-thumb:hover { transform: scale(1.2); }
     }
   </style>
 </head>
@@ -214,54 +189,56 @@
 
       <section class="guide-section">
         <h2>Bumper Configuration Table</h2>
-        <p>Different tile manufacturers produce standard "6-inch" tiles with slight variations in exact dimensions. Use the reference table below to identify the bumper combination needed for your specific tile stock. Hover over any diagram to enlarge it. You may need to experiment to find the perfect size for your specific tiles. The tile should be snug, but it should not require a lot of force to install the tile. </p>
+        <p>Different tile manufacturers produce standard "6-inch" tiles with slight variations in exact dimensions. Use the reference guide and table below to identify the bumper combination needed for your specific tile stock. You may need to experiment to find the perfect size for your specific tiles. The tile should be snug, but it should not require a lot of force to install the tile.</p>
+
+        <figure style="border: none; background: transparent; box-shadow: none;">
+          <img src="images/tile_config_guide.webp" alt="Bumper Configuration Guide Diagram showing color combinations for 150mm to 155mm tiles">
+        </figure>
 
         <div class="table-container">
           <table>
             <thead>
               <tr>
-                <th>Configuration</th>
                 <th>Inner Opening</th>
                 <th>Bumper Combination</th>
                 <th>Compatible Tile Types &amp; Notes</th>
-                <th>Visual Diagram</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td><strong>A</strong></td>
-                <td>155.0 mm</td>
+                <td>155 mm (6.10")</td>
                 <td>All Blue Bumpers</td>
                 <td>Oversize 6" tiles</td>
-                <td class="td-img"><img src="images/155mm_config.webp" alt="Config A Diagram (All Blue Bumpers)" class="diagram-thumb"></td>
               </tr>
               <tr>
-                <td><strong>B</strong></td>
-                <td>154.0 mm</td>
+                <td>154 mm (6.06")</td>
                 <td>Half Blue / Half Black Bumpers</td>
                 <td>Intermediate fit for slightly oversized tiles</td>
-                <td class="td-img"><img src="images/154mm_config.webp" alt="Config B Diagram (Blue and Black Bumpers)" class="diagram-thumb"></td>
               </tr>
               <tr>
-                <td><strong>C</strong></td>
-                <td>153.0 mm</td>
+                <td>153 mm (6.02")</td>
                 <td>All Black Bumpers</td>
                 <td>Standard 6" tiles (including Lowe's Daltile)</td>
-                <td class="td-img"><img src="images/153mm_config.webp" alt="Config C Diagram (All Black Bumpers)" class="diagram-thumb"></td>
               </tr>
               <tr>
-                <td><strong>D</strong></td>
-                <td>151.5 mm</td>
+                <td>152.5 mm (6.00")</td>
                 <td>Half Black / Half Orange Bumpers</td>
-                <td>Narrow profile tiles</td>
-                <td class="td-img"><img src="images/151.5mm_config.webp" alt="Config D Diagram (Black and Orange Bumpers)" class="diagram-thumb"></td>
+                <td>Intermediate fit for standard to narrow tiles (including Home Depot Daltile)</td>
               </tr>
               <tr>
-                <td><strong>E</strong></td>
-                <td>150.0 mm</td>
+                <td>152 mm (5.98")</td>
                 <td>All Orange Bumpers</td>
+                <td>Narrow profile tiles</td>
+              </tr>
+              <tr>
+                <td>151 mm (5.94")</td>
+                <td>Half Orange / Half Red Bumpers</td>
+                <td>Intermediate fit for very narrow tiles</td>
+              </tr>
+              <tr>
+                <td>150 mm (5.91")</td>
+                <td>All Red Bumpers</td>
                 <td>True 150 mm tiles (such as older Lowe's Satori lines)</td>
-                <td class="td-img"><img src="images/150mm_config.webp" alt="Config E Diagram (All Orange Bumpers)" class="diagram-thumb"></td>
               </tr>
             </tbody>
           </table>

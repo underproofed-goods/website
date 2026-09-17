@@ -203,6 +203,23 @@
       .product-info { position: static; }
       .nav-links { display: none; }
       .footer-bottom { flex-direction: column; align-items: flex-start; }
+      
+      /* New rules for horizontal mobile gallery */
+      .product-gallery {
+        flex-direction: row;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding-bottom: 12px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none; /* Hides scrollbar in Firefox */
+      }
+      .product-gallery::-webkit-scrollbar { 
+        display: none; /* Hides scrollbar in Chrome/Safari */
+      }
+      .gallery-item {
+        min-width: 85vw; /* Shows a peek of the next image to encourage swiping */
+        scroll-snap-align: center;
+      }
     }
   </style>
 </head>

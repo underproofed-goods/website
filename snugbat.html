@@ -211,6 +211,11 @@
     .social-icon { width: 15px; height: 15px; display: inline-block; vertical-align: middle; }
     .footer-bottom { border-top: 1px solid var(--border); padding-top: 24px; display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-muted); }
 
+    /* Gallery Indicators (Hidden on Desktop) */
+    .gallery-indicators { 
+      display: none; 
+    }
+
     @media (max-width: 768px) {
       .product-grid, .footer-grid { grid-template-columns: 1fr; }
       .product-info { position: static; }
@@ -231,6 +236,25 @@
       .gallery-item {
         min-width: 85vw;
         scroll-snap-align: center;
+      }
+
+      /* Reveal indicators on mobile layout */
+      .gallery-indicators {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin-top: -12px;
+        margin-bottom: 32px;
+      }
+      .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #d1d1d1;
+        transition: background-color 0.2s ease;
+      }
+      .dot.active {
+        background: var(--text-main);
       }
     }
   </style>
@@ -480,5 +504,48 @@
 
   </div>
 
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const gallery = document.querySelector('.product-gallery');
+      const items = gallery.querySelectorAll('.gallery-item');
+      
+      // Create the indicators container
+      const indicatorsContainer = document.createElement('div');
+      indicatorsContainer.className = 'gallery-indicators';
+      
+      // Insert the container right after the gallery
+      gallery.parentNode.insertBefore(indicatorsContainer, gallery.nextSibling);
+
+      // Generate a dot for each gallery item
+      items.forEach((_, index) => {
+        const dot = document.createElement('div');
+        dot.className = `dot ${index === 0 ? 'active' : ''}`;
+        indicatorsContainer.appendChild(dot);
+      });
+
+      const dots = indicatorsContainer.querySelectorAll('.dot');
+
+      // Use IntersectionObserver to detect which item is currently snapped in view
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // Find the index of the item that is currently in view
+            const index = Array.from(items).indexOf(entry.target);
+            
+            // Update active state on dots
+            dots.forEach((dot, i) => {
+              dot.classList.toggle('active', i === index);
+            });
+          }
+        });
+      }, {
+        root: gallery,
+        threshold: 0.6 // Triggers when 60% of an image is visible
+      });
+
+      // Start observing each gallery item
+      items.forEach(item => observer.observe(item));
+    });
+  </script>
 </body>
 </html>
